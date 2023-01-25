@@ -5,6 +5,8 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/home", methods=["GET", "POST"])
+def home():
+    return render_template('index.html', TITLE="Home", MAIN="Home page")
 @app.route("/signUp", methods=["GET", "POST"])
 def signUp():
     if request.method == "GET":
@@ -17,7 +19,7 @@ def signUp():
         </form>
         """
         return render_template('index.html', TITLE="Sign Up", MAIN=dom)
-        
+
     elif request.method == "POST":
         if len(request.get_json()["username"]) < 6:
             return make_response(json.dumps({

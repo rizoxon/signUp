@@ -7,7 +7,7 @@ const password = document.querySelector("body > main > form > input[name='passwo
 form.onsubmit = async () => {
     event.preventDefault()
 
-    const response = await fetch("/", {
+    const response = await fetch("/signUp", {
         method: 'POST',
         headers: {'Content-Type': 'application/json',},
         body: JSON.stringify({
@@ -17,5 +17,5 @@ form.onsubmit = async () => {
         })
     })
     const data = await response.json()
-    console.log(data);
+    console.log(data["message"]);
 }
